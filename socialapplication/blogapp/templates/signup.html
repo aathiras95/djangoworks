@@ -1,0 +1,99 @@
+<!--{%extends 'pagehead.html'%}-->
+<!--{%block body_block%}-->
+
+
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{%static 'css/signup.css' %}">
+    <!-- font awosome -->
+  <script src="https://kit.fontawesome.com/61d8d73bb4.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="page" class="site">
+     <div class="container">
+    <div class="wrapper">
+     <div class="signup">
+            <div class="content-heading">
+                <div class="y-style">
+                    <div class="logo">
+
+                    </div>
+                    <div class="welcome">
+                        <h2>Welcome <br>Back! </h2>
+                        <p>Get start Creative.</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-form">
+                <div class="y-style">
+                    <form action="" method="post">
+                        {%csrf_token%}
+
+
+                        <p>
+                            <label >FirstName</label>
+                            <input type="text"  name= "first_name" id="id_first_name" placeholder="Enter Your Firstname">
+                        </p>
+                        <p>
+                            <label >LastName</label>
+                            <input type="text" name="last_name" id="id_last_name" placeholder="Enter Your Lastname">
+                        </p>
+                        <p>
+                            <label >Email</label>
+                            <input type="email" name="email" id="id_email"  placeholder="Enter Your Email">
+                        </p>
+                        <!-- <p>
+                            <label >Mobile</label>
+                            <input type="number"  placeholder="Enter Your Mobile Number">
+                        </p> -->
+                        <p>
+                            <label >Username</label>
+                            <input type="text" name="username" id="id_username" placeholder="Enter Your Username">
+                        </p>
+                        <p>
+                            <label >Password</label>
+                            <input type="password" name="password1" id="id_password1" placeholder="Enter Your Password">
+                        </p>
+
+                        <p>
+                            <label >Confirm Password</label>
+                            <input type="password"  name="password2" id="id_password2" placeholder="Confirm Password">
+                        </p>
+                        <p class="check">
+                            <input type="checkbox" id="terms">
+                            <label for="conditions">I agree the Terms and Conditions</label>
+                        </p>
+
+
+                        <!-- <p class="forgot"> <a href="#">Forgot Password</a> </p> -->
+                        <p><button type="submit">SignUP</button> </p>
+                    </form>
+                    <div class="social">
+                        <p> <span> Or Signup With</span></p>
+                        <ul>
+                            <li> <a href="#" class="google"><i class="fa-brands fa-google"></i></a></i></li>
+                            <li> <a href="#" class="facebook"><i class="fa-brands fa-facebook"></i></a> </i></li>
+                            <li> <a href="#" class="twitter"><i class="fa-brands fa-twitter"></i></a></i></li>
+                        </ul>
+                    </div>
+                    <div class="afterform">
+                        <p>Already have  an account?</p>
+                        <a href="{%url 'login'%}" class="t-signup">Login  Here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+ </div>
+     </div>
+</div>
+<!--{%endblock%}-->
+</body>
+</html>

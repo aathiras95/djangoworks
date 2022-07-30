@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/viewprofile.css' %}">
+    <!-- font awosome -->
+    <script src="https://kit.fontawesome.com/61d8d73bb4.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<main class="container">
+  <div class="card">
+    <img src="{{request.user.users.profile_pic.url}}" alt="" class="card__image" />
+    <div class="card__text">
+      <h2>{{request.user}}</h2>
+      <p> {{request.user.users.bio}}</p><br>
+    </div>
+    <div class="card__text">
+  <p></p>
+      <p><span><i class="fa-solid fa-envelope"></i></span>{{request.user.email}}</p>
+      <p><span><i class="fa-solid fa-phone"></i></span>{{request.user.users.phone}}</p>
+    </div>
+
+
+
+
+    <ul class="card__info">
+      <li>
+        <span class="card__info__stats"></span>
+        <span>posts</span>
+      </li>
+      <li>
+        <span class="card__info__stats">{{request.user.users.fetch_following_count}}</span>
+        <span>followers</span>
+      </li>
+      <li>
+        <span class="card__info__stats"></span>
+        <span>following</span>
+      </li>
+    </ul>
+    <div class="card__action">
+        {%if request.user.users%}
+        <a href="{%url 'index' %}"> <button class="card__action__button card__action--follow">Home</button></a>
+        {%else%}
+        <a href="{%url 'profilebio' %}"> <button class="card__action__button card__action--follow">Add Profile</button></a>
+        {%endif%}
+      <a href="{%url 'signout' %}"><button class="card__action__button card__action--message">Logout</button></a>
+    </div>
+    <p></p>
+    <div class="card__action">
+        {%if request.user.users.profile_pic%}
+      <a href="{%url 'changeprofile' request.user.users.id %}"><button class="card__action__button card__action--follow">Update Profile</button></a>
+    {%endif%}
+    </div>
+  </div>
+
+</main>
+</body>
+</html>

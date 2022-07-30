@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>calculator</title>
+    <style>
+        .container{
+            width:50%
+            background-color:rgb(252, 186, 3)
+            }
+         .row{
+         width:50%
+            }
+    </style>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<h1>calculator home</h1>
+<a href="{%url 'calc-add'%}">Addition</a>
+<a href="{%url 'calc-sub'%}">Subtraction</a>
+<a href="{%url 'calc-mul'%}">Multiplication</a>
+<a href="{%url 'calc-div'%}">division</a>
+<a href="{%url 'calc-fdiv'%}">floor division</a>
+<a href="{%url 'calc-rem'%}">Reminder</a>
+<a href="{%url 'calc-fact'%}">Factorial</a>
+<a href="{%url 'calc-prime'%}">prime</a>
+<a href="{%url 'calc-word'%}">Word Count</a>
+</body>
+</html>

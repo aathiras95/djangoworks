@@ -1,0 +1,17 @@
+
+Employee.objects.create(eid="emp_17",employee_name='heera',
+designation='HR manager',salary=60000,
+email='heera@gmail.com',experience=3)
+
+Select All
+
+from employee.models import Employee
+     qs=Employee.objects.all()
+     qs
+
+filter Query
+
+     data=Employee.objects.filter(designation='developer')
+     for i in data:
+            print(i.eid,i.employee_name,i.salary)
+

@@ -1,0 +1,159 @@
+{%extends 'pagehead.html'%}
+{%block body_block%}
+
+
+<!--<!DOCTYPE html>-->
+<!--{%load static%}-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Document</title>-->
+<!--    <link rel="stylesheet" href="{%static 'css/profilebio.css'%}">-->
+<!--    &lt;!&ndash; font awosome &ndash;&gt;-->
+<!--  <script src="https://kit.fontawesome.com/61d8d73bb4.js" crossorigin="anonymous"></script>-->
+<!--</head>-->
+<!--<body>-->
+<div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                {%if messages%}
+                    {%for msg in messages%}
+                {%if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS%}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Holy guacamole!</strong>{{msg}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {%endif%}
+                {%if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR%}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Holy guacamole!</strong>{{msg}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+<!--                            <div class="bg-danger text-white">-->
+
+<!--                                <span><h2>{{msg}}</h2></span>-->
+<!--                            </div>-->
+                {%endif%}
+
+                    {%endfor%}
+                {%endif%}
+            </div>
+            <div class="col-4"></div>
+        </div>
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">{{form.errors}}</div>
+    <div class="col-4"></div>
+</div>
+
+
+
+<div id="page" class="site">
+     <div class="container">
+    <div class="wrapper">
+     <div class="signup">
+            <div class="content-heading">
+                <div class="y-style">
+                    <div class="logo">
+
+                    </div>
+                    <div class="welcome">
+                        <h2>Add Here!!. <br></h2>
+                        <p></p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-form">
+                <div class="y-style">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {%csrf_token%}
+
+
+                        <!-- <p>
+                            <label >FirstName</label>
+                            <input type="text"  name= "first-name" id="id_first-name" placeholder="Enter Your Firstname">
+                        </p>
+                        <p>
+                            <label >LastName</label>
+                            <input type="text" name="last-name" id="id_last-name" placeholder="Enter Your Lastname">
+                        </p> -->
+<!--                        <p>-->
+<!--                            <label >Username</label>-->
+<!--                            <input type="text" name="username" id="id_username" placeholder="Enter Your Username">-->
+<!--                        </p>-->
+                        <p>{{request.user}}</p>
+
+                        <p>
+                            <label >Bio</label>
+                            <input type="text" name="bio" id="id_bio"  placeholder="Enter Your Bio Here">
+                        </p>
+                        <p>
+                            <label >Phone</label>
+                            <input type="number" name="phone" id="id_phone"  placeholder="Enter Your Phonenumber">
+                        </p>
+                         <p>
+                            <label >Date Of Birth</label>
+                            <input type="date" name="date_of_birth" id="id_date_of_birth" >
+                        </p>
+
+                        <p>
+                            <label >Upload Image</label>
+                            <input type="file" name="profile_pic" id="id_profile_pic">
+                        </p>
+
+                        <p>
+                            <label >Gender</label><br>
+                            <select id="id_gender" name="gender" class="form-control" style="width:100%; outline: 0;
+    margin: 0 0 20px;
+    padding: 10px 15px;
+    border-radius: 7px;
+    border: 1px solid var(--light-color);">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">other</option>
+
+                              </select>
+
+                        </p>
+                        <p class="check">
+                            <input type="checkbox" id="terms">
+                            <label for="condition">Publish profile</label>
+                        </p>
+
+
+                        <!-- <p class="forgot"> <a href="#">Forgot Password</a> </p> -->
+                        <p><button type="submit">Add Profile Details</button> </p>
+                    </form>
+                    <!-- <div class="social">
+                        <p> <span> Or Signup With</span></p>
+                        <ul>
+                            <li> <a href="#" class="google"><i class="fa-brands fa-google"></i></a></i></li>
+                            <li> <a href="#" class="facebook"><i class="fa-brands fa-facebook"></i></a> </i></li>
+                            <li> <a href="#" class="twitter"><i class="fa-brands fa-twitter"></i></a></i></li>
+                        </ul>
+                    </div>
+                    <div class="afterform">
+                        <p>Already have  an account?</p>
+                        <a href="" class="t-signup">Login  Here</a>
+                    </div> -->
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+ </div>
+     </div>
+</div>
+{%endblock%}
+<!--</body>-->
+<!--</html>-->

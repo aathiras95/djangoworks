@@ -1,0 +1,87 @@
+{%extends 'pagehead.html'%}
+{%block body_block%}
+
+
+<!--<!DOCTYPE html>-->
+<!--{%load static%}-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Document</title>-->
+<!--    <link rel="stylesheet" href="{%static 'css/profilebio.css'%}">-->
+<!--    &lt;!&ndash; font awosome &ndash;&gt;-->
+<!--  <script src="https://kit.fontawesome.com/61d8d73bb4.js" crossorigin="anonymous"></script>-->
+<!--</head>-->
+<!--<body>-->
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        {%if messages%}
+        {%for msg in messages%}
+        {%if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS%}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Holy guacamole!</strong>{{msg}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {%endif%}
+        {%if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR%}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Holy guacamole!</strong>{{msg}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        {%endif%}
+
+        {%endfor%}
+        {%endif%}
+    </div>
+    <div class="col-4"></div>
+</div>
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">{{form.errors}}</div>
+    <div class="col-4"></div>
+</div>
+
+
+<div id="page" class="site">
+    <div class="container">
+        <div class="wrapper">
+            <div class="signup">
+                <div class="content-heading">
+                    <div class="y-style">
+                        <div class="logo">
+
+                        </div>
+                        <div class="welcome">
+                            <h2>Update Here!!. <br></h2>
+                            <p></p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-form">
+                    <div class="y-style">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {%csrf_token%}
+
+                            {{form.as_p}}
+
+
+                            <p>
+                                <button type="submit">Update Details</button>
+                            </p>
+                        </form>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{%block body_block%}
+<div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+  <img src="{{employe.emp_img.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{employe.employee_name}}</h5>
+    <p class="card-text">{{form.eid}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{employe.designation}}</li>
+    <li class="list-group-item">{{employe.salary}}</li>
+    <li class="list-group-item">{{employe.email}}</li>
+    <li class="list-group-item">{{employe.experience}}</li>
+  </ul>
+
+
+</div>
+
+
+
+
+        </div>
+        <div class="col-4"></div>
+    </div>
+{%endblock%}

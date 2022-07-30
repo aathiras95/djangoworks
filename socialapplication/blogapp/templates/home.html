@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="{%static 'css/home.css'%}">
+    <script src="https://kit.fontawesome.com/61d8d73bb4.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+<nav>
+    <div class="container">
+        <h2 class="log">
+            For blog
+        </h2>
+        <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" placeholder="Search Here">
+        </div>
+        <div class="create">
+            <label class="btn btn-primary" for="create-Post">Create </label>
+            <div class="profile-photo">
+                {%if request.user.users.profile_pic%}
+                <a href="{%url 'updatepropic' request.user.users.id%}">   <img src="{{request.user.users.profile_pic.url}}" alt=""> </a>
+                {%endif%}
+            </div>
+
+
+        </div>
+    </div>
+</nav>
+
+
+<!-- -------main-- -->
+<main>
+    <div class="container">
+        <!-- -------------left--------------- -->
+        <div class="left">
+            <a class="profile">
+                <div class="profile-photo">
+                    <img src="{{request.user.users.profile_pic.url}}" alt="">
+                </div>
+                <div class="handle">
+                    <h4>{{request.user}}</h4>
+                    <p class="text-muted">
+                        {{request.user.users.bio}}
+
+                    </p>
+                </div>
+            </a>
+            <!-- --------------------sidebar------------- -->
+            <div class="sidebar">
+                <a href="{%url 'index'%}" class="menu-items active">
+                    <span><i class="fa-solid fa-house-user"></i></span>
+                    <h3>Home</h3>
+                </a>
+
+                <a class="menu-items">
+                    <span><i class="fa-solid fa-bell"></i></span>
+                    <h3>Notification</h3>
+                </a>
+                <a href="" class="menu-items ">
+                    <span><i class="fa-solid fa-message"></i></span>
+                    <h3>Messages</h3>
+                </a>
+
+                {%if request.user.users%}
+                <a href="{%url 'changeprofile' request.user.users.id %}" class="menu-items">
+                    <span><i class="fa-solid fa-pen-to-square"></i></span>
+                    <h3>EditProfile</h3>
+                </a>
+                <a href="{% url 'viewmyprofile'%}" class="menu-items">
+                    <span><i class="fa-solid fa-pen-to-square"></i></span>
+                    <h3>ViewProfile</h3>
+                </a>
+                {%else%}
+                <a href="{% url 'profilebio'%}" class="menu-items">
+                    <span><i class="fa-solid fa-pen-to-square"></i></span>
+                    <h3>Add Profile</h3>
+                </a>
+                 {%endif%}
+                <a href="{% url 'passwordchange' %}" class="menu-items ">
+                    <span><i class="fa-solid fa-lock"></i></span>
+                    <h3>Change Password</h3>
+                </a>
+                <a href="" class="menu-items ">
+                    <span><i class="fa-solid fa-palette"></i></span>
+                    <h3>Themes</h3>
+                </a>
+                <a href="{%url 'signout' %}" class="menu-items">
+                    <span><i class="fa-solid fa-right-from-bracket"></i></span>
+                    <h3>Logout</h3>
+                </a>
+                <a href="" class="menu-items">
+                    <span><i class="fa-solid fa-gear"></i></span>
+                    <h3>settings</h3>
+                </a>
+            </div>
+            <label for="create-post" class="btn btn-primary">Create post</label>
+        </div>
+        <!-- ------middle------------------ -->
+        <div class="middle">
+<!--            <div class="stories">-->
+
+<!--                    <div class="story">-->
+<!--                        <div class="profile-photo">-->
+<!--                            {%if blog.image%}-->
+<!--                            <img src="{{blog.image.url}}" alt="">-->
+<!--                            {%endif%}-->
+<!--                        </div>-->
+<!--                        <p class="name">your story</p>-->
+
+<!--                    </div>-->
+
+<!--                <div class="story">-->
+<!--                    <div class="profile-photo">-->
+<!--                        <img src="./pimages/monu.jpg" alt="">-->
+<!--                    </div>-->
+<!--                    <p class="name">your story</p>-->
+<!--                </div>-->
+<!--                <div class="story">-->
+<!--                    <div class="profile-photo">-->
+<!--                        <img src="./pimages/monu.jpg" alt="">-->
+<!--                    </div>-->
+<!--                    <p class="name">your story</p>-->
+<!--                </div>-->
+<!--                <div class="story">-->
+<!--                    <div class="profile-photo">-->
+<!--                        <img src="./pimages/monu.jpg" alt="">-->
+<!--                    </div>-->
+<!--                    <p class="name">your story</p>-->
+<!--                </div>-->
+<!--                <div class="story">-->
+<!--                    <div class="profile-photo">-->
+<!--                        <img src="./pimages/monu.jpg" alt="">-->
+<!--                    </div>-->
+<!--                    <p class="name">your story</p>-->
+<!--                </div>-->
+<!--                <div class="story">-->
+<!--                    <div class="profile-photo">-->
+<!--                        <img src="./pimages/monu.jpg" alt="">-->
+<!--                    </div>-->
+<!--                    <p class="name">your story</p>-->
+<!--                </div>-->
+<!--            </div>-->
+            <form class="create-post" method="post" enctype="multipart/form-data"  >
+            {%csrf_token%}
+                <div class="profile-photo">
+                    <img src="{{request.user.users.profile_pic.url}}" alt="">
+                </div>
+                <input type="text" placeholder="Title" name="title" id=" id_title">
+
+                <input type="textarea" placeholder="Description" name="description" id="id_description">
+                <input type="file" name="image" id="id_image">
+                <button type="submit" class="btn btn-primary">
+                    Post
+                </button>
+
+
+
+            </form>
+            <!-- ------------------------------feeds------------------------- -->
+            {%for blog in blogs%}
+            <div class="feeds">
+                <!-- -------------------feed post----- -->
+
+                <div class="feed">
+
+                    <div class="head">
+                        <div class="user">
+                            <div class="profile-photo">
+                                <img src="{{blog.author.users.profile_pic.url}}" alt="">
+                            </div>
+                            <div class="ingo">
+                                <h3>{{blog.author}}</h3>
+                                <small>{{blog.posted_date}}</small>
+                            </div>
+                        </div>
+
+                        <span class="edit">
+                            <div class="dropdown">
+  <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="fa-solid fa-ellipsis"></i>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">Edit Post</a></li>
+    <li><a class="dropdown-item" href="{%url 'delpost' blog.id %}">Remove Post</a></li>
+
+  </ul>
+</div>
+
+
+
+
+
+
+                            </span>
+
+                    </div>
+                    <div></div>
+
+                    <div class="title">
+                        <p></p>
+                        <p></p>
+                      <b> <h5>{{blog.title}}</h5>   </b>
+                    </div>
+
+
+                    <div class="photo">
+                        {%if blog.image%}
+                        <img src="{{blog.image.url}}" alt="">
+                        {%endif%}
+                    </div>
+                <div class="description">
+                    <p></p>
+                    <p></p>
+                    <b> <h5> {{blog.description}}</h5> </b></div>
+                    <div class="action-buttons">
+                        <div class="interaction-buttons">
+                            {{blog.get_like_count}}
+                            <a href="{%url 'addlike' blog.id %}"> <span><i class="fa-regular fa-heart"></i></span></a>
+                            <a class="btn btn-light" data-bs-toggle="collapse" href="#collapseExample"
+                               role="button" aria-expanded="false" aria-controls="collapseExample">
+                                <span><i class="fa-regular fa-comment"></i></span>
+                            </a>
+                            <div class="collapse" id="collapseExample">
+                                <div class="card card-body">
+                                    <form action="{%url 'add-comment' blog.id%}" method="post">
+                                        {%csrf_token%}
+                                        {{comment_form.as_p}}
+                                        <input type="submit" value="comment">
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="bookmark">
+                            <span><i class="fa-regular fa-bookmark"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="liked-by">
+                        {%for user in blog.get_liked_user%}
+                        <span><img src="{{ user.profile_pic.url}}" alt=""></span>
+                        {%endfor%}
+                        <p>Liked by <b>{{blog.get_liked_user}}</b></p>
+                    </div>
+                    <div class="caption">
+
+                    </div>
+                    <div class="comments text-muted">
+                       view all comments
+
+<a class="" data-bs-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample1">
+    ....
+  </a>
+                        <div class="collapse" id="collapseExample1">
+  <div class="card card-body">
+    {%for comment in blog.comments_set.all%}
+
+      <div class="search-bar">
+           <i class="fa-solid fa-user"></i>
+
+           <b> {{comment.user}}</b>:{{comment.comment}}
+        </div>
+      <input type="text">
+      {%endfor%}
+  </div>
+</div>
+
+
+
+                    </div>
+
+
+
+
+               </div>
+
+               <!-- -----------------------------end of first post--- -->
+            </div>
+{%endfor%}
+            <!-- ------------------------end of post part--- -->
+        </div>
+
+        <!-- ------------------------emd of middle---- -->
+
+        <!-- -------------right------------- -->
+        <div class="right">
+            <div class="messages">
+                <div class="heading">
+                    <h4>Message</h4><i class="fa-solid fa-pen-to-square"></i>
+                </div>
+                <!-- ------search bar--- -->
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="search" placeholder="Search Message" id="messages-search">
+                </div>
+                <!-- -------Message Category------ -->
+                <div class="category">
+                    <h6 class="active">Primary</h6>
+                    <h6>General</h6>
+                    <h6 class="message-requests">Requests(2)</h6>
+                </div>
+                <!-- -----message----- -->
+                <div class="message">
+                    <div class="profile-photo">
+                        <img src="./pimages/broc.jpg" alt="">
+                    </div>
+                    <div class="message-body">
+                        <h5>Menakshi</h5>
+                        <p class="text-muted"> hai good mring</p>
+                    </div>
+                </div>
+                <div class="message">
+                    <div class="profile-photo">
+                        <img src="./pimages/coffe n5.jpg" alt="">
+                        <div class="active"></div>
+                    </div>
+                    <div class="message-body">
+                        <h5>Medha</h5>
+                        <p class="text-muted"> hai good mring</p>
+                    </div>
+                </div>
+                <div class="message">
+                    <div class="profile-photo">
+                        <img src="./pimages/coffeen12.jpg" alt="">
+                    </div>
+                    <div class="message-body">
+                        <h5>Meenu</h5>
+                        <p class="text-bold"> hai good mring</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- --------------end of message section -->
+
+            <div class="friend-requests">
+                <h4>Followers Suggesion</h4>
+                {%if request.user.users.get_invitations%}
+                {%for user in request.user.users.get_invitations %}
+                <div class="request">
+                    <div class="info">
+                        <div class="profile-photo">
+                            <img src="{{user.users.profile_pic.url}}" alt="">
+                        </div>
+                        <div>
+                            <h6>
+                                {{user.username}}
+                            </h6>
+                            <p class="text-muted">
+                                1 Mutual Friends
+                            </p>
+
+                        </div>
+
+                    </div>
+                    <div class="action">
+                        <a href="{%url 'followfriend' user.id %}">
+                        <button class="btn btn-primary">
+                            Follow
+                        </button>
+                            </a>
+                        <button class="btn">
+                            Unfollow
+                        </button>
+                    </div>
+                </div>
+                {%endfor%}
+                {%endif%}
+
+            </div>
+
+
+
+
+
+            <!-- --------------follow -->
+            <div class="friend-requests">
+                <h4>Following--{{request.user.users.fetch_following_count}}</h4>
+                 {%for user in request.user.users.fetch_followings%}
+                <div class="request">
+                    <div class="info">
+                        <div class="profile-photo">
+                            <img src="{{user.users.profile_pic.url}}" alt="">
+                        </div>
+                        <div>
+                            <h6>
+                                {{user}}
+                            </h6>
+                            <p class="text-muted">
+                         {{user.users.bio}}
+                        </p>
+                        </div>
+
+                    </div>
+
+                </div>
+                {%endfor%}
+
+            </div>
+        </div>
+        <!-- --------------end of right -->
+
+
+    </div>
+</main>
+
+
+</body>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+
+</html>

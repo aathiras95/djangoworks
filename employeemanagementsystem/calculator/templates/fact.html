@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Factorial</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <form action="" method="post">
+                {%csrf_token%}
+                <div class="mb-3">
+                    <input type="number" name="num1" id="number1" placeholder="Enter Number1" class="form-control">
+                </div>
+<!--                <div class="mb-3">-->
+<!--                    <input type="number" name="num2" id="number2"placeholder="Enter Number2" class="form-control">-->
+<!--                </div>-->
+                <div class="mb-3">
+                    <button type="submit" name="fact">Factorial</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-4">
+            {%if factorial%}
+
+            <span>Factorial</span>{{factorial}}
+            {%endif%}
+        </div>
+    </div>
+</div>
+</body>
+</html>
